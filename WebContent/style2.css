@@ -1,0 +1,250 @@
+@charset "utf-8";
+/* CSS Document */
+*{
+	margin:0;
+	padding:0;
+	}
+body{
+	font-size:0.75em;
+	padding:0;
+	
+}
+a{
+	color:#069;
+	text-decoration:none;
+	}
+a:hover{
+	text-decoration:underline;
+	}
+
+button{
+background: #008abf; /* Old browsers */
+background: -moz-linear-gradient(top,  #008abf 0%, #096ca2 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#008abf), color-stop(100%,#096ca2)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #008abf 0%,#096ca2 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #008abf 0%,#096ca2 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #008abf 0%,#096ca2 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #008abf 0%,#096ca2 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#008abf', endColorstr='#096ca2',GradientType=0 ); /* IE6-9 */
+
+
+color:#fff;
+border:solid 1px #096ca2;
+padding:2px 5px;
+cursor:pointer;
+height:20px;
+margin:0;
+	}
+.blank{
+	clear:both;
+	height:10px;
+	}
+#header .headerTop{
+background: #474646; /* Old browsers */
+background: -moz-linear-gradient(top,  #474646 0%, #131314 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#474646), color-stop(100%,#131314)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #474646 0%,#131314 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #474646 0%,#131314 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #474646 0%,#131314 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #474646 0%,#131314 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#474646', endColorstr='#131314',GradientType=0 ); /* IE6-9 */
+
+
+color:#dddddd;
+overflow:hidden;
+}
+#header .headerTop .headerLeft{
+	float:left;
+	display:block;
+	height:38px;
+	line-height:38px;
+	margin-left:30px;
+	color:#fff;
+}
+#header .headerTop .headerLeft h1{
+	font-size:15px;
+	}
+#header .headerTop .headerRight{
+	float:right;
+	display:block;
+}
+#header .headerTop .headerRight span{
+	display:inline-block;
+	height:38px;
+	float:left;
+	line-height:38px;
+	padding:0 20px;
+	}
+#header .headerTop .headerRight .userImg{
+	padding-right:5px;
+	}
+#header .headerTop .headerRight .userImg {
+	vertical-align:middle;
+	*margin-top:7px;
+	}
+#header .headerTop .headerRight .help{
+	border-right:solid 1px #454445;
+	}
+#header .headerTop .headerRight .ibmLogo{
+	background:url(images/ibmlogo.png) no-repeat 0 0;
+	height:38px;
+	width:86px;
+	border-left:solid 1px #000;
+	text-indent:-10000px;
+	padding:0;
+}
+#header .headerMenu{
+background: #008abf; /* Old browsers */
+background: -moz-linear-gradient(top,  #008abf 0%, #096ca2 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#008abf), color-stop(100%,#096ca2)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #008abf 0%,#096ca2 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #008abf 0%,#096ca2 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #008abf 0%,#096ca2 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #008abf 0%,#096ca2 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#008abf', endColorstr='#096ca2',GradientType=0 ); /* IE6-9 */
+
+overflow:hidden;
+padding-left:30px;
+box-shadow:0 -1px 3px rgba(0,0,0,0.15) inset;
+	}
+#header .headerMenu ul li{
+	float:left;
+	display:block;
+	border-right:solid 1px #04618c;
+	}
+#header .headerMenu ul li a{
+	height:48px;
+	overflow:hidden;
+	display:block;
+	line-height:48px;
+	padding:0 15px;
+	color:#fff;
+	text-decoration:none;
+	text-shadow:0 1px 1px rgba(0,0,0,0.15);
+	font-size:1.2em;
+	}
+#header .headerMenu ul li a:hover{
+	background:#1576aa;
+	}
+#header .headerMenu ul li a.selected{
+	background:#fff;
+	color:#222;
+	}
+.mainContainer{
+	padding:10px 30px;
+	}
+#searchBar{
+	padding:5px 10px;
+	background:#f1f1f1;
+	margin-bottom:5px;
+	}
+
+#main{
+	
+	height:100%;
+}
+#main .leftNav{
+float:left;
+display:block;
+width:250px;
+margin-right:10px;
+height:100%;
+}
+
+#main .rightCon{
+	overflow:hidden;
+	}
+.section{
+	border:solid 1px #ddd;
+	
+	}
+	.section h2{
+		overflow:hidden;
+		background: #f7f7f7; /* Old browsers */
+background: -moz-linear-gradient(top,  #f7f7f7 0%, #dddddd 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f7f7f7), color-stop(100%,#dddddd)); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  #f7f7f7 0%,#dddddd 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  #f7f7f7 0%,#dddddd 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  #f7f7f7 0%,#dddddd 100%); /* IE10+ */
+background: linear-gradient(to bottom,  #f7f7f7 0%,#dddddd 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f7f7f7', endColorstr='#dddddd',GradientType=0 ); /* IE6-9 */
+
+		padding:5px 10px;
+		font-size:14px;
+		}
+		.section .sectionContainer{
+		overflow:auto;
+		padding:10px;
+		
+		}
+	.section ul{
+		margin-left:20px;
+		}
+		.section .list{
+			margin:-10px;}
+		
+	.list{
+		line-height:1.5em;
+		
+		}
+		.list li a{
+			display:block;
+			border-bottom:solid 1px #eee;
+			padding:5px 10px 5px 30px;
+			background:transparent url(../images/trunk_ico.png) no-repeat 10px 6px;
+			}
+		.list li a:hover{
+			text-decoration:none;
+			background:#e5f3f9 url(../images/trunk_ico.png) no-repeat 10px 6px;
+			}
+		.section .functionsList{
+			margin:0;
+		}
+	.functionsList{
+			list-style:none;
+			
+		}
+	.functionsList li{
+		display:block;
+		height:80px;
+		width:32%;
+		vertical-align:top;
+		margin-bottom:5px;
+		text-align:center;
+		zoom:1;
+		float:left;
+		}
+	.functionsList li label{
+		height:2em;
+		font-size:10px;
+		
+		}
+		
+		.table{
+			border-collapse:collapse;
+			border:solid 1px #ddd;
+			}
+		.table th{
+			background: #f1f1f1;
+			padding:5px;
+			text-align:left;
+			border:solid 1px #ddd;
+			border-bottom:solid 2px #086ca1;
+			}
+			.table td{
+				padding:5px;
+				border:solid 1px #ddd;
+				}
+			.right{
+				float:right;
+				}
+				.left{
+					float:left;}
+			#orderStatus .right{
+				font-weight:normal;
+				font-size:11px;
+			}
+			#orderStatus .right label{
+				font-weight:bold;
+				margin-left:10px;
+				}
