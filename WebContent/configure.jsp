@@ -15,8 +15,29 @@
   See the License for the specific language governing permissions and
   limitations under the License.
 -->
-<!-- Sample HTML file -->
+					<%
+					 
+					 String vcap = System.getenv("VCAP_APPLICATION");	
+					 String instance_id = "unknown";
+					 String port = "unknown";
 
+					  if (vcap == null) {
+					   //System.out.println("No VCAP_SERVICES found");
+					  }    
+					  else {
+						try {
+							JSONObject obj = (JSONObject)JSON.parse(vcap);
+							System.out.println(obj.toString());
+							port = ((Long)obj.get("port")).toString();
+							instance_id = obj.get("instance_id").toString();
+
+					      } catch (Exception e) {
+					    	  e.printStackTrace();
+					    	  
+					   }
+					 }		
+					
+					%>
 <HTML>
 <HEAD>
     <META http-equiv="Content-Style-Type" content="text/css">
@@ -25,12 +46,18 @@
 </HEAD>
 
 <BODY BGCOLOR="#FFFFFF">
+<div class = "container">
 <%@ page import="java.util.Collection, java.util.Iterator,com.ibm.json.java.*" isThreadSafe="true" isErrorPage="false"%>
-<TABLE width="740" align="left">
+
+
+
+<TABLE>
     <TBODY>
         <TR>
             <TD align="center" colspan="2">
                 <H3>Configuration Utilities</H3>
+Running on port <%=port %> , instance ID : <%= instance_id %>
+<br>
             </TD>
         </TR>
         <TR>
@@ -67,8 +94,7 @@
                 Database" link below to repopulate the new database tables.</b></TD>
         </TR>  -->
         <TR>
-            <TD><A href="config?action=buildDB" target="_blank"><FONT
-                    face="Times New Roman" size="-1">(Re)-populate Database</FONT></A></TD>
+            <TD><A href="config?action=buildDB">(Re)-populate Database</A></TD>
             <TD>This link is used to initially populate or re-populate the
                 database with fictitious users (uid:0, uid:1, ...) and
                 stocks (s:0, s:1, ...). First all existing users and stocks are
@@ -76,18 +102,33 @@
                 users and stocks. This option does not drop and recreate the 
                 db tables.</TD>
         </TR>
-    </TBODY>
-</TABLE>
-<b>VCAP_SERVICES: </b>
-					<textarea rows="20" cols="80" align = "middle" style = "    display: block;margin-left: auto;    margin-right: auto;" id = "vcap_services"></textarea>
+        <TR>
+            <TD><a href = "generateOOM" target = "_blank" onclick="return confirm('Are you sure? This will kill one of the application instances')">Generate Out Of Memory failure</a></TD>
+            <TD>This link will cause an OOM and kill the server of one (not necessarily this) application instance. If you have multiple instances, re-visit the application immediately after the OOM to get redirected to another instance. The killed instance should restart in a few minutes. </TD>
+        </TR>
+        <TR>
+            <TD><a href = "stress.jsp">Stress test</a></TD>
+            <TD>Run a script which will generate mock load on the server by logging in with multiple users and issuing trades. </TD>
+        </TR>
+        <TR>
+            <TD>VCAP_SERVICES</TD>
+            <TD>					<textarea rows="20" cols="80" style = "    display: block;margin-left: auto;    margin-right: auto;" id = "vcap_services"></textarea>
 					<script>
 					myjson = <%=System.getenv("VCAP_SERVICES")%>;
 					if(myjson!=null)
 						document.getElementById("vcap_services").value = JSON.stringify(myjson, undefined, 2);
 					
-					</script>
+					</script></TD>
+        </TR>
+    </TBODY>
+</TABLE>
+
+
 					
 				
-					
+</div>
 </BODY>
 </HTML>
+
+
+					

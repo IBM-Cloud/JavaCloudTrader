@@ -39,7 +39,7 @@ if ( results != null )out.print(results);
 </TABLE>
 <DIV align="center">
 
-     <div class="modal-body">
+     <div class="modal-dialog">
      <h3 class="text-center">Login</h3>
           <form class="form col-md-12 center-block" action="app" method="POST">
             <div class="form-group">
@@ -52,9 +52,10 @@ if ( results != null )out.print(results);
             <INPUT type="hidden" name="action"	value="login">
               <input class="btn btn-primary btn-lg btn-block" type = "submit"/>
             </div>
+            <span class="pull-right"><A href="register.jsp">First time user?</A></span>
           </form>
       </div>
 </DIV>
-<span class="pull-right"><A href="register.jsp">First time user?</A></span>
+
 </BODY>
 </HTML>

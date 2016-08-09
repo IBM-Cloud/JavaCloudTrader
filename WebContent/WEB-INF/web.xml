@@ -87,8 +87,6 @@
             <param-value>Standard</param-value>
          </init-param>
          <init-param id="InitParam_6">
-            <description>Sets the default WebInterface. Legal values
-                include JSP and JSP-images</description>
             <param-name>WebInterface</param-name>
             <param-value>JSP</param-value>
          </init-param>
@@ -236,7 +234,12 @@
          <display-name>PingServlet2IncludeRcv</display-name>
          <servlet-name>PingServlet2IncludeRcv</servlet-name>
          <servlet-class>com.ibm.samples.trade.web.prims.PingServlet2IncludeRcv</servlet-class>
-      </servlet>                  
+      </servlet> 
+      <servlet id="Servlet_33">
+         <display-name>GenerateOOM</display-name>
+         <servlet-name>GenerateOOM</servlet-name>
+         <servlet-class>com.ibm.samples.trade.web.GenerateOOM</servlet-class>
+      </servlet>                 
       <servlet-mapping id="ServletMapping_1">
          <servlet-name>TradeAppServlet</servlet-name>
          <url-pattern>/app</url-pattern>
@@ -340,7 +343,11 @@
       <servlet-mapping id="ServletMapping_26">
          <servlet-name>PingServlet2Include</servlet-name>
          <url-pattern>/servlet/PingServlet2Include</url-pattern>
-      </servlet-mapping>                 
+      </servlet-mapping>      
+      <servlet-mapping id="ServletMapping_27">
+         <servlet-name>GenerateOOM</servlet-name>
+         <url-pattern>/generateOOM</url-pattern>
+      </servlet-mapping>           
       <session-config id="SessionConfig_1">
          <session-timeout>30</session-timeout>
       </session-config>
