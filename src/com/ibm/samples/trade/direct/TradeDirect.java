@@ -1791,6 +1791,20 @@ public class TradeDirect implements TradeServices
 	{
 		Connection conn=null;
 		
+		String organizeBy;
+		String vcap = System.getenv("VCAP_APPLICATION");	
+			
+		if (vcap == null) {
+			organizeBy = " ORGANIZE BY COLUMN";
+			Log.log("Running on Local, so DB setting: "+organizeBy);
+		}
+		else
+		{
+			organizeBy = " ORGANIZE BY ROW";
+			Log.log("Running on Bluemix, so DB setting: "+organizeBy);
+		}
+		
+		
 		try
 		{
 			if (Log.doTrace()) Log.traceEnter("Initializing the schema in the db.");
@@ -1799,7 +1813,7 @@ public class TradeDirect implements TradeServices
 			PreparedStatement stmt=null;
 
 			
-			stmt = getStatement(conn, "CREATE TABLE holdingejb (PURCHASEPRICE DECIMAL(14, 2), HOLDINGID INTEGER NOT NULL, QUANTITY DOUBLE NOT NULL, PURCHASEDATE TIMESTAMP, ACCOUNT_ACCOUNTID INTEGER, QUOTE_SYMBOL VARCHAR(250))  ORGANIZE BY ROW");
+			stmt = getStatement(conn, "CREATE TABLE holdingejb (PURCHASEPRICE DECIMAL(14, 2), HOLDINGID INTEGER NOT NULL, QUANTITY DOUBLE NOT NULL, PURCHASEDATE TIMESTAMP, ACCOUNT_ACCOUNTID INTEGER, QUOTE_SYMBOL VARCHAR(250))  "+organizeBy);
 			stmt.executeUpdate();
 			stmt.close();
 			
@@ -1807,7 +1821,7 @@ public class TradeDirect implements TradeServices
 			stmt.executeUpdate();
 			stmt.close();
 					
-			stmt = getStatement(conn, "CREATE TABLE accountprofileejb (ADDRESS VARCHAR(250), PASSWD VARCHAR(250), USERID VARCHAR(250) NOT NULL, EMAIL VARCHAR(250), CREDITCARD VARCHAR(250), FULLNAME VARCHAR(250)) ORGANIZE BY ROW");
+			stmt = getStatement(conn, "CREATE TABLE accountprofileejb (ADDRESS VARCHAR(250), PASSWD VARCHAR(250), USERID VARCHAR(250) NOT NULL, EMAIL VARCHAR(250), CREDITCARD VARCHAR(250), FULLNAME VARCHAR(250)) "+organizeBy);
 			stmt.executeUpdate();
 			stmt.close();
 					
@@ -1815,7 +1829,7 @@ public class TradeDirect implements TradeServices
 			stmt.executeUpdate();
 			stmt.close();
 					
-			stmt = getStatement(conn, "CREATE TABLE quoteejb (LOW DECIMAL(14, 2), OPEN1 DECIMAL(14, 2), VOLUME DOUBLE NOT NULL, PRICE DECIMAL(14, 2), HIGH DECIMAL(14, 2), COMPANYNAME VARCHAR(250), SYMBOL VARCHAR(250) NOT NULL, CHANGE1 DOUBLE NOT NULL) ORGANIZE BY ROW");
+			stmt = getStatement(conn, "CREATE TABLE quoteejb (LOW DECIMAL(14, 2), OPEN1 DECIMAL(14, 2), VOLUME DOUBLE NOT NULL, PRICE DECIMAL(14, 2), HIGH DECIMAL(14, 2), COMPANYNAME VARCHAR(250), SYMBOL VARCHAR(250) NOT NULL, CHANGE1 DOUBLE NOT NULL) "+organizeBy);
 			stmt.executeUpdate();
 			stmt.close();
 					
@@ -1823,7 +1837,7 @@ public class TradeDirect implements TradeServices
 			stmt.executeUpdate();
 			stmt.close();
 					
-			stmt = getStatement(conn, "CREATE TABLE keygenejb (KEYVAL INTEGER NOT NULL, KEYNAME VARCHAR(250) NOT NULL) ORGANIZE BY ROW");
+			stmt = getStatement(conn, "CREATE TABLE keygenejb (KEYVAL INTEGER NOT NULL, KEYNAME VARCHAR(250) NOT NULL) "+organizeBy);
 			stmt.executeUpdate();
 			stmt.close();
 					
@@ -1831,7 +1845,7 @@ public class TradeDirect implements TradeServices
 			stmt.executeUpdate();
 			stmt.close();
 					
-			stmt = getStatement(conn, "CREATE TABLE accountejb (CREATIONDATE TIMESTAMP, OPENBALANCE DECIMAL(14, 2), LOGOUTCOUNT INTEGER NOT NULL, BALANCE DECIMAL(14, 2), ACCOUNTID INTEGER NOT NULL, LASTLOGIN TIMESTAMP, LOGINCOUNT INTEGER NOT NULL, PROFILE_USERID VARCHAR(250)) ORGANIZE BY ROW");
+			stmt = getStatement(conn, "CREATE TABLE accountejb (CREATIONDATE TIMESTAMP, OPENBALANCE DECIMAL(14, 2), LOGOUTCOUNT INTEGER NOT NULL, BALANCE DECIMAL(14, 2), ACCOUNTID INTEGER NOT NULL, LASTLOGIN TIMESTAMP, LOGINCOUNT INTEGER NOT NULL, PROFILE_USERID VARCHAR(250)) "+organizeBy);
 			stmt.executeUpdate();
 			stmt.close();
 					
@@ -1839,7 +1853,7 @@ public class TradeDirect implements TradeServices
 			stmt.executeUpdate();
 			stmt.close();
 					
-			stmt = getStatement(conn, "CREATE TABLE orderejb (ORDERFEE DECIMAL(14, 2), COMPLETIONDATE TIMESTAMP, ORDERTYPE VARCHAR(250), ORDERSTATUS VARCHAR(250), PRICE DECIMAL(14, 2), QUANTITY DOUBLE NOT NULL, OPENDATE TIMESTAMP, ORDERID INTEGER NOT NULL, ACCOUNT_ACCOUNTID INTEGER, QUOTE_SYMBOL VARCHAR(250), HOLDING_HOLDINGID INTEGER) ORGANIZE BY ROW");
+			stmt = getStatement(conn, "CREATE TABLE orderejb (ORDERFEE DECIMAL(14, 2), COMPLETIONDATE TIMESTAMP, ORDERTYPE VARCHAR(250), ORDERSTATUS VARCHAR(250), PRICE DECIMAL(14, 2), QUANTITY DOUBLE NOT NULL, OPENDATE TIMESTAMP, ORDERID INTEGER NOT NULL, ACCOUNT_ACCOUNTID INTEGER, QUOTE_SYMBOL VARCHAR(250), HOLDING_HOLDINGID INTEGER) "+organizeBy);
 			stmt.executeUpdate();
 			stmt.close();
 					
