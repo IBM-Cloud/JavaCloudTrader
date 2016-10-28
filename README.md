@@ -58,7 +58,7 @@ Add the following datasource config to your Liberty server.xml.  Replace the val
     <library id="sql-library">
         <fileset dir="${shared.resource.dir}/sql" includes="*.jar"/>
     </library>
-    ```
+```
     
 ## Running CloudTrader locally and connecting to a mysql server
 
