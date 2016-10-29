@@ -1792,18 +1792,7 @@ public class TradeDirect implements TradeServices
 		Connection conn=null;
 		
 		String organizeBy;
-		String vcap = System.getenv("VCAP_APPLICATION");	
-			
-		if (vcap == null) {
-			organizeBy = " ORGANIZE BY COLUMN";
-			Log.log("Running on Local, so DB setting: "+organizeBy);
-		}
-		else
-		{
-			organizeBy = " ORGANIZE BY ROW";
-			Log.log("Running on Bluemix, so DB setting: "+organizeBy);
-		}
-		
+		organizeBy = " ORGANIZE BY COLUMN";
 		
 		try
 		{
@@ -1811,6 +1800,37 @@ public class TradeDirect implements TradeServices
 			
 			conn = getConn();
 			PreparedStatement stmt=null;
+			
+			//Need a better way to detect if the db is dashDB
+			//dashDB requires ORGANIZE BY ROW
+			if(conn.getMetaData().getUserName().toLowerCase().contains("dash")){
+				organizeBy = " ORGANIZE BY ROW";
+				Log.log("USING dashDB, so DB setting: "+organizeBy);
+			}
+
+//			stmt = getStatement(conn, "DROP TABLE holdingejb");
+//			stmt.executeUpdate();
+//			stmt.close();
+//
+//			stmt = getStatement(conn, "DROP TABLE accountprofileejb");
+//			stmt.executeUpdate();
+//			stmt.close();
+//
+//			stmt = getStatement(conn, "DROP TABLE quoteejb");
+//			stmt.executeUpdate();
+//			stmt.close();
+//			
+//			stmt = getStatement(conn, "DROP TABLE keygenejb");
+//			stmt.executeUpdate();
+//			stmt.close();
+//			
+//			stmt = getStatement(conn, "DROP TABLE accountejb");
+//			stmt.executeUpdate();
+//			stmt.close();
+//
+//			stmt = getStatement(conn, "DROP TABLE orderejb");
+//			stmt.executeUpdate();
+//			stmt.close();
 
 			
 			stmt = getStatement(conn, "CREATE TABLE holdingejb (PURCHASEPRICE DECIMAL(14, 2), HOLDINGID INTEGER NOT NULL, QUANTITY DOUBLE NOT NULL, PURCHASEDATE TIMESTAMP, ACCOUNT_ACCOUNTID INTEGER, QUOTE_SYMBOL VARCHAR(250))  "+organizeBy);
