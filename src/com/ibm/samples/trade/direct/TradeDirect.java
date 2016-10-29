@@ -1791,8 +1791,7 @@ public class TradeDirect implements TradeServices
 	{
 		Connection conn=null;
 		
-		String organizeBy;
-		organizeBy = " ORGANIZE BY COLUMN";
+		String organizeBy  = "";
 		
 		try
 		{
