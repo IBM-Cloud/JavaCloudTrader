@@ -114,7 +114,8 @@ Running on port <%=port %> , instance ID : <%= instance_id %>
             <TD>VCAP_SERVICES</TD>
             <TD>					<textarea rows="20" cols="80" style = "    display: block;margin-left: auto;    margin-right: auto;" id = "vcap_services"></textarea>
 					<script>
-					myjson = <%=System.getenv("VCAP_SERVICES")%>;
+					myjson = {"Note": "Uncomment Line 118 in configure.jsp to see JSON"};
+					//myjson = <%=System.getenv("VCAP_SERVICES")%>;
 					if(myjson!=null)
 						document.getElementById("vcap_services").value = JSON.stringify(myjson, undefined, 2);
 					
