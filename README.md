@@ -44,7 +44,7 @@ Copy the db2jcc4.jar to `$LIBERTY_HOME/wlp/usr/shared/resources/sql`. If `sql` d
 
 Add the following datasource config to your Liberty server.xml.  Replace the values with your database credentials
 ```
-    <dataSource id='sql-datasource' jdbcDriverRef='sql-driver' jndiName='jdbc/TradeDataSource'> 
+    <dataSource id='sql-datasource' jdbcDriverRef='db2-driver' jndiName='jdbc/TradeDataSource'> 
         <properties databaseName="XXXXX" 
             user="xxxxx" 
             password='xxxxxx'
@@ -53,29 +53,31 @@ Add the following datasource config to your Liberty server.xml.  Replace the val
             driverType="4"/> 
     </dataSource>
     
-    <jdbcDriver id="sql-driver" libraryRef="sql-library" />
+    <jdbcDriver id="db2-driver" libraryRef="db2-library" />
 
-    <library id="sql-library">
-        <fileset dir="${shared.resource.dir}/sql" includes="*.jar"/>
+    <library id="db2-library">
+        <fileset dir="${shared.resource.dir}/db2" includes="*.jar"/>
     </library>
 ```
     
 ## Running CloudTrader locally and connecting to a mysql server
 
 Download [mysql-connector-java-5.1.32.jar](https://mvnrepository.com/artifact/mysql/mysql-connector-java/5.1.32) 
-and place it in `$LIBERTY_HOME/wlp/usr/shared/resources/sql`. If `sql` directory does not exist, create it.
+and place it in `$LIBERTY_HOME/wlp/usr/shared/resources/mysql`. If `mysql` directory does not exist, create it.
 
 ```
-    <dataSource id='sql-datasource' jdbcDriverRef='sql-driver' jndiName='jdbc/TradeDataSource'> 
+    <dataSource id='sql-datasource' jdbcDriverRef='mysql-driver' jndiName='jdbc/TradeDataSource'> 
         <properties databaseName="xxxxxxxx" 
             user="xxxxxxxxx" 
             password='xxxxx'
-            portNumber="xxxx" serverName="xxxxxxxxx" /> 
+            portNumber="xxxx" serverName="xxxxxxxxx" 
+            driverType="4"
+            driverClass="com.mysql.jdbc.Driver" /> 
     </dataSource>
 
-    <jdbcDriver id="sql-driver" libraryRef="sql-library" />
+    <jdbcDriver id="mysql-driver" libraryRef="mysql-library" />
 
-    <library id="sql-library">
-        <fileset dir="${shared.resource.dir}/sql" includes="*.jar"/>
+    <library id="mysql-library">
+        <fileset dir="${shared.resource.dir}/mysql" includes="*.jar"/>
     </library>
 ```
