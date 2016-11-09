@@ -2,6 +2,8 @@
 
 For more detailed instructions with images, click here: http://www.ibm.com/developerworks/cloud/library/cl-cloudtrader-app/index.html
 
+![Diagram](https://raw.githubusercontent.com/IBM-Bluemix/JavaCloudTrader/master/diagram.png)
+
 ## Prereqs
 **Eclipse for Java EE Developers** http://www.eclipse.org/downloads/packages/eclipse-ide-java-ee-developers/neonr
 
