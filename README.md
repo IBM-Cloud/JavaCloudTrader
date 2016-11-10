@@ -34,6 +34,8 @@ You should now see the CloudTrader project (with code) in your Project Explorer 
 
 Click **Finish** on both wizards. Within a few moments, your application should be deployed!
 
+After it's deployed, add these other optional services: **Monitoring & Analytics** **Auto-Scaling** and **Session Cache**. No changes are needed to the source code to leverage these services.
+
 ## Running CloudTrader locally and connecting to dashDB DB2 on the Bluemix
 
 Download DB2 JDBC Driver from https://www-01.ibm.com/support/docview.wss?uid=swg21363866
