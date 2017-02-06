@@ -44,7 +44,7 @@ Unzip the downloaded zip file using command line to get the jar. (On OS X, you m
 ```
 unzip ./db2_db2driver_for_jdbc_sqlj_v11.1.zip
 ```
-Copy the db2jcc4.jar to `$LIBERTY_HOME/wlp/usr/shared/resources/sql`. If `sql` directory does not exist, create it.
+Copy the db2jcc4.jar to `$LIBERTY_HOME/wlp/usr/shared/resources/db2`. If `db2` directory does not exist, create it.
 
 Add the following datasource config to your Liberty server.xml.  Replace the values with your database credentials
 ```
