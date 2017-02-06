@@ -35,5 +35,12 @@
     <artifactId>transaction-api</artifactId>
     <version>1.1</version>
 </dependency>
+<dependency>
+  <groupId>com.ibm</groupId>
+  <artifactId>json4j</artifactId>
+  <version>1.0.0</version>
+  <scope>system</scope>
+  <systemPath>${basedir}/WebContent/WEB-INF/lib/com.ibm.json4j.jar</systemPath>
+</dependency>
   </dependencies>
 </project>
