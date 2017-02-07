@@ -1,4 +1,4 @@
 build/*
 target/*
-.settings/*
 /build/
+/target/
