@@ -29,12 +29,35 @@ You should now see the CloudTrader project (with code) in your Project Explorer 
 - You can now **drag and drop the CloudTrader project** onto the Bluemix server you just created.
 - You will be presented with a wizard. Choose a unique name for your application to prevent name collisions on the ng.bluemix.net domain.
 - On the next panel, you can select the URL and Memory information. Accept the defaults and click Next.
-- On the Services selection panel, we will create the services the application needs. For now, we will only create the database service. Click on the **Add Service Icon** for the add service window icon near the top right to open the Add Service window. **Select dashDB**.
+- On the Services selection panel, we will create the services the application needs. For now, we will only create the database service. Click on the **Add Service Icon** for the add service window icon near the top right to open the Add Service window. **Select cleardb**.
 - For the Name, enter **TradeDataSource**. Bluemix will create the necessary configuration so that CloudTrader can look for this datasource with this JNDI name. 
 
 Click **Finish** on both wizards. Within a few moments, your application should be deployed!
 
 After it's deployed, add these other optional services: **Monitoring & Analytics** **Auto-Scaling** and **Session Cache**. No changes are needed to the source code to leverage these services.
+
+## Running CloudTrader locally and connecting to a mysql (cleardb) server
+
+Download [mysql-connector-java-5.1.32.jar](https://mvnrepository.com/artifact/mysql/mysql-connector-java/5.1.32) 
+and place it in `$LIBERTY_HOME/wlp/usr/shared/resources/mysql`. If `mysql` directory does not exist, create it.
+
+```
+    <dataSource id='sql-datasource' jdbcDriverRef='mysql-driver' jndiName='jdbc/TradeDataSource'> 
+        <properties databaseName="xxxxxxxx" 
+            user="xxxxxxxxx" 
+            password='xxxxx'
+            portNumber="xxxx" serverName="xxxxxxxxx" 
+            driverType="4"
+            driverClass="com.mysql.jdbc.Driver" /> 
+    </dataSource>
+
+    <jdbcDriver id="mysql-driver" libraryRef="mysql-library" />
+
+    <library id="mysql-library">
+        <fileset dir="${shared.resource.dir}/mysql" includes="*.jar"/>
+    </library>
+```
+
 
 ## Running CloudTrader locally and connecting to dashDB DB2 on the Bluemix
 
@@ -61,27 +84,5 @@ Add the following datasource config to your Liberty server.xml.  Replace the val
 
     <library id="db2-library">
         <fileset dir="${shared.resource.dir}/db2" includes="*.jar"/>
-    </library>
-```
-    
-## Running CloudTrader locally and connecting to a mysql server
-
-Download [mysql-connector-java-5.1.32.jar](https://mvnrepository.com/artifact/mysql/mysql-connector-java/5.1.32) 
-and place it in `$LIBERTY_HOME/wlp/usr/shared/resources/mysql`. If `mysql` directory does not exist, create it.
-
-```
-    <dataSource id='sql-datasource' jdbcDriverRef='mysql-driver' jndiName='jdbc/TradeDataSource'> 
-        <properties databaseName="xxxxxxxx" 
-            user="xxxxxxxxx" 
-            password='xxxxx'
-            portNumber="xxxx" serverName="xxxxxxxxx" 
-            driverType="4"
-            driverClass="com.mysql.jdbc.Driver" /> 
-    </dataSource>
-
-    <jdbcDriver id="mysql-driver" libraryRef="mysql-library" />
-
-    <library id="mysql-library">
-        <fileset dir="${shared.resource.dir}/mysql" includes="*.jar"/>
     </library>
 ```
