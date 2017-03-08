@@ -37,7 +37,9 @@ You should now see the CloudTrader project (with code) in your Project Explorer 
 
 
 
-Click **Finish** on both wizards. Within a few moments, your application should be deployed!
+Click **Finish** on both wizards. Within a couple of minutes, your application should be deployed to the route you choose. Visit your application and click on Configuration -> (Re)-populate Database.
+
+![Populate](https://raw.githubusercontent.com/IBM-Bluemix/JavaCloudTrader/master/xdocs/populate_screenshot.png)
 
 After it's deployed, add these other optional services: **Monitoring & Analytics** **Auto-Scaling** and **Session Cache**. No changes are needed to the source code to leverage these services.
 
